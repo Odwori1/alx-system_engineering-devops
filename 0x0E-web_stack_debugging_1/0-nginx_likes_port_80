@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#  script that configures a server
+
+# sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+# service nginx restart
+
+apt-get -y update
+apt-get -y install nginx
+
+ufw allow 'Nginx HTTP'
+
+# sudo service nginx start
+
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+service nginx restart
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
